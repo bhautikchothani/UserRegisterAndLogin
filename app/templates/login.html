@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom CSS styles */
+        /* You can add your custom CSS styles here if needed */
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Welcome to Login Page</h2>
+        {% with msg = get_flashed_messages() %}
+        {% if msg %}
+        {% for m in msg %}
+        <div class="alert alert-success">{{m}}</div>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+        <form action="/login" method="POST">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" class="form-control" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        <br>
+        <form action="/signup" method="GET">
+            <button type="submit" class="btn btn-success    ">Sign Up</button>
+        </form>
+        <br>  
+        <form action="/" method="GET">
+            <button type="submit" class="btn btn-secondary">Home</button>
+        </form>
+    </div>
+</body>
+</html>

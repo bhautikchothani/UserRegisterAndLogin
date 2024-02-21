@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Profile Page</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS styles can be added here */
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Welcome To Your Profile Page!</h1>
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{ url_for('static', filename='images/' + user_profile.photo) }}" alt="Profile Picture" class="img-fluid rounded-circle mb-3">
+            </div>
+            <div class="col-md-8">
+                <p class="lead"><strong>ID:</strong> {{ user_profile.id }}</p>
+                <p class="lead"><strong>Username:</strong> {{ user_profile.username }}</p>
+                <p class="lead"><strong>Phone Number:</strong> {{ user_profile.phone_number }}</p>
+            </div>
+        </div>
+        <form action="/logout" method="POST">
+            <button type="submit" class="btn btn-success mt-3">Log Out</button>
+        </form>
+        <form action="/edit/{{ user_profile.id }}" method="get">
+            <button type="submit" class="btn btn-primary mt-3">Edit Profile</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS and jQuery (optional) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

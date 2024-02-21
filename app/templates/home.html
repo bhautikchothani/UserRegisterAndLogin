@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Welcome to Our Website</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="mt-5 mb-4 text-center">Welcome to Our SkillUpServe</h1>
+        <form action="{{ url_for('homepage') }}" method="GET"></form>
+        <form action="/login" method="GET">
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+        </form>
+        <br>
+        <form action="/signup" method="GET">
+            <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+        </form>
+    </div>
+
+    <!-- Bootstrap JS (optional, for certain components) -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+</body>
+</html>
