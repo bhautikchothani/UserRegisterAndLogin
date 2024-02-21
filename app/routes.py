@@ -11,11 +11,13 @@ from flask_mail import Mail,Message,_MailMixin
 # ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg',}
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 app.config["UPLOAD_FOLDER"] = "app/static/images"
-app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
-app.config['MAIL_PORT'] = 465
+
+## mail##
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = '465'
 app.config['MAIL_USE_SSL'] = True 
 app.config['MAIL_USERNAME'] = 'bhautikchothani51@gmail.com' ##this mail use to send company mail##
-app.config['MAIL_PASSWORD'] = 'kvbjxoneyugapfof'  # Your email 2 step verfication password generate use it ###
+app.config['MAIL_PASSWORD'] = 'iplpxgiqfekvsnpd'  # Your email 2 step verfication password generate use it ###
 mail = Mail(app)
 
 # Function to check if a filename has an allowed extension
@@ -160,10 +162,8 @@ def contact():
         
     
         # Send email to company
-        _MailMixin.send_message(
-        subject='New Contact Form Submission',
+        mail.send_message("New Message From " + name,
         sender=email,
-        recipients=['bhautikchothani.sus.com'],  # Company email address
+        recipients=['bhautikchothani52@gmail.com'],  # Company email address
         body=f'Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}')
-        return 'Thank you for your message. We will get back to you soon.'
-    return render_template('home.html')
+        return render_template('home.html')

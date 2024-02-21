@@ -2,7 +2,7 @@ from app import db,bcrypt
 from flask_login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy import column,Integer,String
-from flask_mail import Mail
+
 
 
 class Credentials(db.Model,UserMixin):

@@ -2,9 +2,14 @@ from flask import Flask
 from flask_sqlalchemy  import SQLAlchemy
 from flask_bcrypt import Bcrypt
 from flask_session import Session
-app  = Flask(__name__)
-from flask_migrate import Migrate
 from flask_mail import Mail
+from flask_migrate import Migrate
+
+
+app  = Flask(__name__)
+
+app.config['MAIL_USERNAME'] = 'bhautikchothani51@gmail.com' ##this mail use to send company mail##
+app.config['MAIL_PASSWORD'] = 'iplpxgiqfekvsnpd'  # Your email 2 step verfication password generate use it ###
 
 bcrypt =Bcrypt(app)
 
