@@ -8,8 +8,8 @@ from flask_migrate import Migrate
 
 app  = Flask(__name__)
 
-app.config['MAIL_USERNAME'] = 'bhautikchothani51@gmail.com' ##this mail use to send company mail##
-app.config['MAIL_PASSWORD'] = 'iplpxgiqfekvsnpd'  # Your email 2 step verfication password generate use it ###
+app.config['MAIL_USERNAME'] = 'hautikchothani51@gmail.com' ##this mail use to send company mail##
+app.config['MAIL_PASSWORD'] = 'iplpxgiqfekvsnpa'  # Your email 2 step verfication password generate use it ###
 
 bcrypt =Bcrypt(app)
 

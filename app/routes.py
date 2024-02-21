@@ -16,8 +16,8 @@ app.config["UPLOAD_FOLDER"] = "app/static/images"
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = '465'
 app.config['MAIL_USE_SSL'] = True 
-app.config['MAIL_USERNAME'] = 'bhautikchothani51@gmail.com' ##this mail use to send company mail##
-app.config['MAIL_PASSWORD'] = 'iplpxgiqfekvsnpd'  # Your email 2 step verfication password generate use it ###
+app.config['MAIL_USERNAME'] = 'hautikchothani51@gmail.com' ##this mail use to send company mail##
+app.config['MAIL_PASSWORD'] = 'iplpxgiqfekvsnpa'  # Your email 2 step verfication password generate use it ###
 mail = Mail(app)
 
 # Function to check if a filename has an allowed extension
@@ -164,6 +164,6 @@ def contact():
         # Send email to company
         mail.send_message("New Message From " + name,
         sender=email,
-        recipients=['bhautikchothani52@gmail.com'],  # Company email address
+        recipients=['hautikchothani52@gmail.com'],  # Company email address
         body=f'Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}')
         return render_template('home.html')
