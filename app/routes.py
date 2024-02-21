@@ -1,17 +1,22 @@
 from flask import request, redirect, render_template, flash,session,current_app,url_for
 from app import app, db
-from app.models import Credentials
+from app.models import Credentials,ContactUs
 from flask import after_this_request
 from flask_sqlalchemy import SQLAlchemy
 import secrets
 import os   
 from werkzeug.utils import secure_filename
+from flask_mail import Mail,Message,_MailMixin
 
 # ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg',}
 ALLOWED_EXTENSIONS = {"png", "jpg", "jpeg"}
 app.config["UPLOAD_FOLDER"] = "app/static/images"
-
-
+app.config['MAIL_SERVER'] = 'smtp.googlemail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USE_SSL'] = True 
+app.config['MAIL_USERNAME'] = 'bhautikchothani51@gmail.com' ##this mail use to send company mail##
+app.config['MAIL_PASSWORD'] = 'kvbjxoneyugapfof'  # Your email 2 step verfication password generate use it ###
+mail = Mail(app)
 
 # Function to check if a filename has an allowed extension
 def allowed_file(filename):
@@ -137,3 +142,28 @@ def update(id):
         return render_template("Profile.html", user_profile=user)
     return render_template("login.html", user_profile=user)
 
+
+@app.route('/contact', methods=['POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        phone = request.form['phone']
+        message = request.form['message']
+
+        # Create a new instance of ContactUs model with the form data
+        new_contact = ContactUs(name=name, email=email, phone=phone, message=message)
+
+        # Add the new contact to the database session and commit changes
+        db.session.add(new_contact)
+        db.session.commit()
+        
+    
+        # Send email to company
+        _MailMixin.send_message(
+        subject='New Contact Form Submission',
+        sender=email,
+        recipients=['bhautikchothani.sus.com'],  # Company email address
+        body=f'Name: {name}\nEmail: {email}\nPhone: {phone}\nMessage: {message}')
+        return 'Thank you for your message. We will get back to you soon.'
+    return render_template('home.html')

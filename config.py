@@ -13,3 +13,4 @@ SECRET_KEY="bhautik"
 SESSION_PERMANENT = False
 
 SESSION_TYPE = "filesystem" # default is 'memory', can be changed to any session type accepted by Flask
+
